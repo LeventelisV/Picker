@@ -17,6 +17,5 @@ export const ElementCell = styled.div`
     justify-content: center;
     left:50%;
     right:50%;
-    // overflow: hidden;
     z-index:100;
     top: ${props=>props.position}px`
