@@ -32,10 +32,16 @@ export default function Picker({data = [1,2,3,4,5,6,7,8,9],blockHeight = 40,bloc
         console.log(middlePosition,"middlePosition")
         console.log(middlePosition - (childPosition - parentPosition.current - 1),"middlePosition - (childPosition - parentPosition.current - 1)")
         console.log(displayedData[0].initialPosition,"displayedData[0].initialPosition")
-        if(childPosition + pixelsIWantToMove - parentPosition.current  <= middlePosition + Math.abs(displayedData[0].initialPosition)){
+        if(childPosition + pixelsIWantToMove - parentPosition.current  <= middlePosition + Math.abs(displayedData[0].initialPosition)){console.log("case1");
                 mainListRef.current.style.transform = `translateY(${childPosition - parentPosition.current + pixelsIWantToMove}px)`
         }
-        else{
+        else if((childPosition  - parentPosition.current < middlePosition + Math.abs(displayedData[0].initialPosition))) 
+        // && (childPosition <= middlePosition + Math.abs(displayedData[0].initialPosition)))
+        {
+            console.log(childPosition,"-----", middlePosition + Math.abs(displayedData[0].initialPosition))
+
+            const availableMovingSpace = childPosition - (middlePosition + Math.abs(displayedData[0].initialPosition))
+            mainListRef.current.style.transform = `translateY(${childPosition - parentPosition.current + availableMovingSpace}px)`
 
         }
             // else{
